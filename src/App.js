@@ -7,12 +7,25 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/:botId" exact>
-          <Page />
+     
+
+        <Route path="/sell">
+          <Page url={"buy"} />
         </Route>
 
-        <Route path="/">
-          <Page />
+
+        <Route path="/buy">
+          <Page url={"purchase"} />
+        </Route>
+
+
+        <Route path="/purchase">
+          <Page url={"product"} />
+        </Route>
+
+
+        <Route path="/product">
+          <Page url={"sell"} />
         </Route>
 
         <Route path="*" exact>
