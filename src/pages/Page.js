@@ -1,12 +1,16 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
-const Page = () => {
+const Page = (props) => {
   
   let location = useLocation();
-
+  const history = useHistory()
   return (
-  <div id="me" style={{background : 'skyblue', height: '20px'}}>{`current URL : ${location.pathname || ""}`}</div>)
+  <div>
+    <div onClick={e => {history.push(`/${props.url}`)}}>{props.url}</div>
+    <div id="me" style={{background : 'skyblue', height: '20px'}}>{`current URL : ${location.pathname || ""}`}</div>
+  </div>
+  )
 }
 
 export default Page;
