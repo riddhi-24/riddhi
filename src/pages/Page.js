@@ -1,14 +1,21 @@
 import React from "react";
-import { useLocation, useHistory } from "react-router-dom";
 
-const Page = (props) => {
-  
-  let location = useLocation();
-  const history = useHistory()
+const style = {
+    textAlign: 'center',
+    display: 'table-cell',
+    verticalAlign: 'middle',
+    width: 'auto',
+    padding: '120px',
+    position: 'absolute',
+    left: '50%',
+    transform: 'translate(-50%, 10px)',
+    background: `url(https://www.mvfglobal.com/sites/all/themes/mvfglobal/images/logo-dark.svg) no-repeat`
+}
+
+const Page = () => {
   return (
   <div>
-    <div onClick={e => {history.push(`/${props.url}`)}}>{props.url}</div>
-    <div id="me" style={{background : 'skyblue', height: '20px'}}>{`current URL : ${location.pathname || ""}`}</div>
+    <div id="me" style={style}>{}</div>
   </div>
   )
 }
