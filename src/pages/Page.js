@@ -5,7 +5,7 @@ const style = {
     display: 'table-cell',
     verticalAlign: 'middle',
     width: 'auto',
-    padding: '120px',
+    padding: '130px',
     position: 'absolute',
     left: '50%',
     transform: 'translate(-50%, 10px)',
