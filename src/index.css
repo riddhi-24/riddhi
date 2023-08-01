@@ -5,6 +5,7 @@ body {
   height: 100%;
   font-family: sans-serif;
   overflow: hidden;
+  background-color: lightgrey;
 }
 .pageStyle {
   background: #fff;
@@ -13,4 +14,7 @@ body {
   height: 100%;
   margin: auto;
   box-sizing: border-box;
+}
+#root1{
+  background-color: lightgrey;
 }
