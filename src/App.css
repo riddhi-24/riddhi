@@ -1,5 +1,15 @@
-.App {
-  text-align: center;
+.item {
+  height: 20px;
+  padding: 25px 0;
+  border-bottom: 1px solid;
+}
+.container{
+  display: flex;
+}
+
+.center{
+  height: 100px;
+  width: calc(100% - 200px)
 }
 
 .App-logo {
@@ -9,9 +19,10 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  height: 15px;
+  padding: 25px;
   color: white;
+  font-size: 20px;
 }
 
 .App-intro {
@@ -21,4 +32,15 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.Left-panel{
+  width: 150px;
+    background: whitesmoke;
+    text-align: left;
+    padding: 25px;
+}
+
+.ifrmae-content{
+  background-color: hsl(240deg 10.51% 56.19%);
 }
