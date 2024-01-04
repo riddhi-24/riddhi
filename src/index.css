@@ -18,3 +18,11 @@ body {
 #root1{
   background-color: lightgrey;
 }
+#root #wot_ifrmae body{
+  background-color: red;
+}
+
+body li .navigation_listItemActive{
+  background-color: cornflowerblue;
+}
+
