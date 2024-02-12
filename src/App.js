@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function App() {
 
@@ -6,6 +6,6 @@ export default function App() {
   <iframe id="wot_ifrmae" 
   src="https://app.devtest.wotnot.io/live-chat?access_token="     
   height="2000px"
-  width= "100%"></iframe>
+  width="100%"></iframe>
   );
 }
