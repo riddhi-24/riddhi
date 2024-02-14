@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function App() {
+  const isChatBotOpened = document.getElementById("chat-bubble-close");
+  useEffect(() => {
+    setTimeout(() => {
+      if(window && window.wn && !isChatBotOpened){
+        console.log("added")
+        window.wn.setPopupMessage({text: "Hello!!!", media: "https://picsum.photos/200"})
+      }
+      else console.log("wn not found")
+    }, 2000);
+    
+  }, [])
 
   return (
-  <iframe id="wot_ifrmae" 
-  src="https://app.devtest.wotnot.io/live-chat?access_token="     
-  height="2000px"
-  width="100%"></iframe>
+ <div>hi</div>
   );
 }
