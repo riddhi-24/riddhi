@@ -7,7 +7,7 @@ export default function App() {
         const eventData = JSON.parse(event.data);
         if (eventData && eventData.type === "bubble-loaded") {
           const isChatBotClosed = !document.getElementById("chat-bubble-close");
-          const excludePageregex = /^https?:\/\/[^\/?]+(?:\/|\?[^\/]*)?$/gm
+          const excludePageregex = /^https?:\/\/[^/?]+(?:\/|\?[^/]*)?$/gm
           const popupExcludedPage = document.location.href.match(excludePageregex);
           if (!localStorage.getItem("hasUserClosedPopup") && !popupExcludedPage  && window.wn && isChatBotClosed) {
               setTimeout(() => {
@@ -33,9 +33,9 @@ export default function App() {
   
     });
 
-    () => {
-      localStorage.removeItem("hasUserClosedPopup");
-    }
+    // () => {
+    //   localStorage.removeItem("hasUserClosedPopup");
+    // }
 
   }, [])
 
