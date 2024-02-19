@@ -1,19 +1,43 @@
 import React, { useEffect } from "react";
 
 export default function App() {
-  const isChatBotOpened = document.getElementById("chat-bubble-close");
   useEffect(() => {
-    setTimeout(() => {
-      if(window && window.wn && !isChatBotOpened){
-        console.log("added")
-        window.wn.setPopupMessage({text: "Hello!!!", media: "https://picsum.photos/200"})
+    window.addEventListener("message", (event) => {
+      if (event.data && typeof event.data === "string") {
+        const eventData = JSON.parse(event.data);
+        if (eventData && eventData.type === "bubble-loaded") {
+          const isChatBotClosed = !document.getElementById("chat-bubble-close");
+          const excludePageregex = /^https?:\/\/[^\/?]+(?:\/|\?[^\/]*)?$/gm
+          const popupExcludedPage = document.location.href.match(excludePageregex);
+          if (!localStorage.getItem("hasUserClosedPopup") && !popupExcludedPage  && window.wn && isChatBotClosed) {
+              setTimeout(() => {
+                  window.wn.setPopupMessage({ text: "Hello!!!" })
+                  setTimeout(() => {
+                    const isPopupAdded = document.getElementById("popup-frame");
+                    if (isPopupAdded && isPopupAdded.contentWindow && isPopupAdded.contentWindow.document) {
+                      const closeIcon = isPopupAdded.contentWindow.document.getElementsByClassName("popup-close-button");
+                      if (closeIcon) {
+                        const setUserPref = function(){
+                          localStorage.setItem("hasUserClosedPopup", true); 
+                          closeIcon[0].removeEventListener("click", setUserPref);
+                        }
+                        closeIcon[0].addEventListener("click",setUserPref);
+                      }
+                    }
+                  }, 500);
+              },5000);
+          }
+          else console.log("wn not found || bot opened || user closed popup || excludedPage")
+        }
       }
-      else console.log("wn not found")
-    }, 2000);
-    
+  
+    });
+
+    () => {
+      localStorage.removeItem("hasUserClosedPopup");
+    }
+
   }, [])
 
-  return (
- <div>hi</div>
-  );
+  return (<div></div>)
 }
