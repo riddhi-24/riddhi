@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -12,15 +12,15 @@
 
     if (!isScriptExists) {
       var mixpanelScript = document.createElement('script');
+      mixpanelScript.onload = function initMixPanel(){
+        console.log("mix panel from script", mixpanel);
+        mixpanel.init('mixpanel_token');
+      }
       mixpanelScript.type = 'text/javascript';
       mixpanelScript.async = true;
       mixpanelScript.id = 'footloose-wotnot-tracking';
       mixpanelScript.src = 'https://cdn.jsdelivr.net/npm/mixpanel-browser@2.48.1/dist/mixpanel-jslib-snippet.min.js';
       document.head.appendChild(mixpanelScript);
-      setTimeout(() => {
-        console.log("mix panel from script", mixpanel);
-        mixpanel.init('mixpanel_token');
-      }, 200)
     }
   </script>
 
