@@ -29,6 +29,13 @@
   <div id="root">
   </div>
   <!-- <div id="root1" class="pageStyle"></div> -->
+  <script>
+    try{
+    window.addEventListener('message', function(event) {
+      console.log("Message received from the child: " + JSON.parse(event.data));
+    });}
+    catch(e){alert(e)}
+  </script>
 </body>
 
 </html>
