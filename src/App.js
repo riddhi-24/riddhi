@@ -49,6 +49,6 @@ export default function App() {
     window.dataLayer.push(payload);
   }
 
-  return (<div><button onClick={handleClick}></button>
+  return (<div><button onClick={handleClick}>Click me</button>
   </div>)
 }
