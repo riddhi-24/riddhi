@@ -39,5 +39,16 @@ export default function App() {
 
   }, [])
 
-  return (<div></div>)
+  const handleClick = () =>  {
+    console.log('btn clicked');
+    window.dataLayer = window.dataLayer || [];
+    const payload = {
+      "event": "btn_clicked",
+      "data": "{'Test' : 'Riddhi'}"
+    };
+    window.dataLayer.push(payload);
+  }
+
+  return (<div><button onClick={handleClick}></button>
+  </div>)
 }

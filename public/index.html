@@ -14,17 +14,6 @@
         j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
           'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-PS7CS8G7');</script>
-  <script>
-    function handleClick() {
-      console.log('btn clicked');
-      window.dataLayer = window.dataLayer || [];
-      const payload = {
-        "event": "btn_clicked",
-        "data": "{'Test' : 'Riddhi'}"
-      };
-      window.dataLayer.push(payload);
-    }
-  </script>
 
   <title>Web 1</title>
 </head>
@@ -35,7 +24,6 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <div id="root">
-    <button onclick="handleClick()"></button>
   </div>
   <!-- <div id="root1" class="pageStyle"></div> -->
 </body>
