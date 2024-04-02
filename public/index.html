@@ -20,7 +20,9 @@
 
 <body>
 
-  <iframe width="640" height="480" src="https://embed.wotnot.io/4e29sKLU9LwM0653021343605OTWOovd/bot/4u4wYxbVpn8z065302540047dtqoq1D6?display_header=false&history_retention=false" frameborder="0"></iframe>
+  <iframe width="640" height="480"
+    src="https://embed.wotnot.io/4e29sKLU9LwM0653021343605OTWOovd/bot/4u4wYxbVpn8z065302540047dtqoq1D6?display_header=false&history_retention=false"
+    frameborder="0"></iframe>
 
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PS7CS8G7" height="0" width="0"
@@ -29,22 +31,6 @@
   <div id="root">
   </div>
   <!-- <div id="root1" class="pageStyle"></div> -->
-  <script>
-    try{
-    window.addEventListener('message', function(event) {
-      var eventResponse;
-      try{
-      eventResponse = JSON.parse(event.data);
-      }
-      catch(e){
-      console.log(e)
-      }
-      if(eventResponse && eventResponse.event === "embed_event"){
-        alert(eventResponse.payload);
-      }
-      });}
-    catch(e){alert(e)}
-  </script>
 </body>
 
 </html>
