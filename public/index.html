@@ -37,7 +37,7 @@
       eventResponse = JSON.parse(event.data);
       }
       catch(e){
-      alert(e);
+      console.log(e)
       }
       if(eventResponse && eventResponse.event === "embed_event"){
         alert(eventResponse.payload);
