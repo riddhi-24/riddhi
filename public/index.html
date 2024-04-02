@@ -32,8 +32,17 @@
   <script>
     try{
     window.addEventListener('message', function(event) {
-      console.log("Message received from the child: " + JSON.parse(event.data));
-    });}
+      var eventResponse;
+      try{
+      eventResponse = JSON.parse(event.data);
+      }
+      catch(e){
+      alert(e);
+      }
+      if(eventResponse && eventResponse.event === "embed_event"){
+        alert(eventResponse.payload);
+      }
+      });}
     catch(e){alert(e)}
   </script>
 </body>
