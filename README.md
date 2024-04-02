@@ -4,3 +4,64 @@ web-one, web-two, web-three
 
 https://app.test.wotnot.io/account/879/bots
 
+
+# Footloose client script 
+to track how many times popup closed via mixpanel
+<script>
+    var isScriptExists = document.getElementById('footloose-wotnot-tracking');
+    console.log("mixpanel script exists", isScriptExists);
+
+    if (!isScriptExists) {
+      var mixpanelScript = document.createElement('script');
+      mixpanelScript.onload = function initMixPanel(){
+        console.log("mix panel loaded from website", mixpanel);
+        mixpanel.init('mixpanel_token');
+      }
+      mixpanelScript.type = 'text/javascript';
+      mixpanelScript.async = true;
+      mixpanelScript.id = 'footloose-wotnot-tracking';
+      mixpanelScript.src = 'https://cdn.jsdelivr.net/npm/mixpanel-browser@2.48.1/dist/mixpanel-jslib-snippet.min.js';
+      document.head.appendChild(mixpanelScript);
+    }
+  </script>
+
+<script>
+    window.addEventListener("message", (event) => {
+          if (event.data && typeof event.data === "string") {
+            const eventData = JSON.parse(event.data);
+            if (eventData && eventData.type === "bubble-loaded") {
+              const isChatBotClosed = !document.getElementById("chat-bubble-close-wrapper");
+              if (!sessionStorage.getItem("hasUserClosedPopup") && window.wn && isChatBotClosed) {
+                  setTimeout(() => {window.wn.setPopupMessage({ text: "Klik hier voor eerlijk advies van een onafhankelijke verkoopadviseur" })
+                      setTimeout(() => {
+                        const isPopupAdded = document.getElementById("popup-frame");
+                        if (isPopupAdded && isPopupAdded.contentWindow && isPopupAdded.contentWindow.document) {
+                          const closeIcon = isPopupAdded.contentWindow.document.getElementsByClassName("popup-close-button");
+                          if (closeIcon) {
+                            const setUserPref = function(){
+                              sessionStorage.setItem("hasUserClosedPopup", true);
+                              mixpanel.track("Popup closed");
+                              closeIcon[0].removeEventListener("click", setUserPref);
+                            }
+                            closeIcon[0].addEventListener("click",setUserPref);
+                          }
+                        }
+                      }, 500);
+                  },10000);
+              }
+              else console.log("wn not found || bot opened || user closed popup || excludedPage")
+            }
+          }
+        });
+  </script>
+
+  <script src="https://app.wotnot.io/chat-widget/4e29sKLU9LwM0653021343605OTWOovd.js"></script> 
+
+
+
+# REPLYCX embed
+
+<script src="https://app.reply.cx/chat-widget/4G4p2yRLwfaS105934638944Mq4uogZN.js" 
+   data-embed-metadata='{"bot_publish_key": "6tJV8ZgU29Uw1117106666899DQ4E6KI", "display_header":"true"}' defer><script>
+
+

@@ -1,4 +1,3 @@
-
 <html lang="en">
 
 <head>
@@ -7,78 +6,37 @@
 
   <script src="https://app.wotnot.io/chat-widget/4e29sKLU9LwM0653021343605OTWOovd.js" defer></script>
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PS7CS8G7');</script>
-  <!-- End Google Tag Manager -->
-<!-- 
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PS7CS8G7');</script>
   <script>
-    var isScriptExists = document.getElementById('footloose-wotnot-tracking');
-    console.log("mixpanel script exists", isScriptExists);
-
-    if (!isScriptExists) {
-      var mixpanelScript = document.createElement('script');
-      mixpanelScript.onload = function initMixPanel(){
-        console.log("mix panel loaded from website", mixpanel);
-        mixpanel.init('mixpanel_token');
-      }
-      mixpanelScript.type = 'text/javascript';
-      mixpanelScript.async = true;
-      mixpanelScript.id = 'footloose-wotnot-tracking';
-      mixpanelScript.src = 'https://cdn.jsdelivr.net/npm/mixpanel-browser@2.48.1/dist/mixpanel-jslib-snippet.min.js';
-      document.head.appendChild(mixpanelScript);
+    function handleClick() {
+      console.log('btn clicked');
+      window.dataLayer = window.dataLayer || [];
+      const payload = {
+        "event": "btn_clicked",
+        "data": "{'Test' : 'Riddhi'}"
+      };
+      window.dataLayer.push(payload);
     }
   </script>
 
-  <script>
-    window.addEventListener("message", (event) => {
-          if (event.data && typeof event.data === "string") {
-            const eventData = JSON.parse(event.data);
-            if (eventData && eventData.type === "bubble-loaded") {
-              const isChatBotClosed = !document.getElementById("chat-bubble-close-wrapper");
-              if (!sessionStorage.getItem("hasUserClosedPopup") && window.wn && isChatBotClosed) {
-                  setTimeout(() => {window.wn.setPopupMessage({ text: "Klik hier voor eerlijk advies van een onafhankelijke verkoopadviseur" })
-                      setTimeout(() => {
-                        const isPopupAdded = document.getElementById("popup-frame");
-                        if (isPopupAdded && isPopupAdded.contentWindow && isPopupAdded.contentWindow.document) {
-                          const closeIcon = isPopupAdded.contentWindow.document.getElementsByClassName("popup-close-button");
-                          if (closeIcon) {
-                            const setUserPref = function(){
-                              sessionStorage.setItem("hasUserClosedPopup", true);
-                              mixpanel.track("Popup closed");
-                              closeIcon[0].removeEventListener("click", setUserPref);
-                            }
-                            closeIcon[0].addEventListener("click",setUserPref);
-                          }
-                        }
-                      }, 500);
-                  },10000);
-              }
-              else console.log("wn not found || bot opened || user closed popup || excludedPage")
-            }
-          }
-        });
-  </script>
-
-  <script src="https://app.wotnot.io/chat-widget/4e29sKLU9LwM0653021343605OTWOovd.js"></script> -->
-
-    <!-- <script src="https://app.reply.cx/chat-widget/4G4p2yRLwfaS105934638944Mq4uogZN.js" 
-    defer></script> -->
-
-  <!--  data-embed-metadata='{"bot_publish_key": "6tJV8ZgU29Uw1117106666899DQ4E6KI", "display_header":"true"}'
- -->
   <title>Web 1</title>
 </head>
 
 <body>
- <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PS7CS8G7"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PS7CS8G7" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div id="root"></div>
+  <div id="root">
+    <button onclick="handleClick()"></button>
+  </div>
   <!-- <div id="root1" class="pageStyle"></div> -->
 </body>
 
