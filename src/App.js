@@ -39,15 +39,15 @@ export default function App() {
 
   }, [])
 
-  const handleClick = () =>  {
-    console.log('btn clicked');
-    window.dataLayer = window.dataLayer || [];
-    const payload = {
-      "event": "btn_clicked",
-      "data": "{'Test' : 'Riddhi'}"
-    };
-    window.dataLayer.push(payload);
-  }
+  // const handleClick = () =>  {
+  //   console.log('btn clicked');
+  //   window.dataLayer = window.dataLayer || [];
+  //   const payload = {
+  //     "event": "btn_clicked",
+  //     "data": "{'Test' : 'Riddhi'}"
+  //   };
+  //   window.dataLayer.push(payload);
+  // }
 
   return (<div>
     
