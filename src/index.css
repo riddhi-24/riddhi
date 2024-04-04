@@ -17,9 +17,12 @@ body {
 }
 #root1{
   background-color: lightgrey;
+}
+
+#root{
   position: absolute;
   left: 25%;
-  top: 15%;
+  top: 5%;
 }
 #root #wot_ifrmae body{
   background-color: red;
