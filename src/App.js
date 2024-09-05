@@ -1,6 +1,27 @@
 import React, { useEffect } from "react";
 
 export default function App() {
+
+
+  function removeElementsOnUnmount() {
+    // Remove prefetch link elements
+    const prefetchLinks = document.querySelectorAll('link[rel="prefetch"][href*="cdn.wotnot.io/modern-chat-bubble"]');
+    prefetchLinks.forEach(link => link.remove());
+
+    // Remove script elements
+    const scriptVendors = document.querySelector('script[src*="cdn.wotnot.io/modern-chat-bubble/"][src*="vendors~main.js"]');
+    const scriptMain = document.querySelector('script[src*="cdn.wotnot.io/modern-chat-bubble/"][src*="main.js"]');
+    const scriptChatWidget = document.querySelector('script[src*="chat-widget/pt5ccHzjEgpw082454069938MsceKjSD.js"]');
+    
+    if (scriptVendors) scriptVendors.remove();
+    if (scriptMain) scriptMain.remove();
+    if (scriptChatWidget) scriptChatWidget.remove();
+
+    // Remove input element
+    const preferenceInput = document.querySelector('input#preference-response');
+    if (preferenceInput) preferenceInput.remove();
+}
+
   useEffect(() => {
 
     // window.addEventListener("message", (event) => {
@@ -32,31 +53,12 @@ export default function App() {
     //   }
     // });
 
-    () => {
-      removeElementsOnUnmount()
+    return () => {removeElementsOnUnmount();
       // localStorage.removeItem("hasUserClosedPopup");
     }
 
   }, [])
 
-  function removeElementsOnUnmount() {
-    // Remove prefetch link elements
-    const prefetchLinks = document.querySelectorAll('link[rel="prefetch"][href*="cdn.wotnot.io/modern-chat-bubble"]');
-    prefetchLinks.forEach(link => link.remove());
-
-    // Remove script elements
-    const scriptVendors = document.querySelector('script[src*="cdn.wotnot.io/modern-chat-bubble/"][src*="vendors~main.js"]');
-    const scriptMain = document.querySelector('script[src*="cdn.wotnot.io/modern-chat-bubble/"][src*="main.js"]');
-    const scriptChatWidget = document.querySelector('script[src*="chat-widget/pt5ccHzjEgpw082454069938MsceKjSD.js"]');
-    
-    if (scriptVendors) scriptVendors.remove();
-    if (scriptMain) scriptMain.remove();
-    if (scriptChatWidget) scriptChatWidget.remove();
-
-    // Remove input element
-    const preferenceInput = document.querySelector('input#preference-response');
-    if (preferenceInput) preferenceInput.remove();
-}
 
 
   // const handleClick = () =>  {
