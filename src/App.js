@@ -3,34 +3,34 @@ import React, { useEffect } from "react";
 export default function App() {
   useEffect(() => {
 
-    window.addEventListener("message", (event) => {
-      if (event.data && typeof event.data === "string") {
-        const eventData = JSON.parse(event.data);
-        if (eventData && eventData.type === "bubble-loaded") {
-          debugger
-          const isChatBotClosed = !document.getElementById("chat-bubble-close-wrapper");
-          if (!sessionStorage.getItem("hasUserClosedPopup") && window.wn && isChatBotClosed) {
-              setTimeout(() => {window.wn.setPopupMessage({ text: "Klik hier voor eerlijk advies van een onafhankelijke verkoopadviseur" })
-                  setTimeout(() => {
-                    const isPopupAdded = document.getElementById("popup-frame");
-                    if (isPopupAdded && isPopupAdded.contentWindow && isPopupAdded.contentWindow.document) {
-                      const closeIcon = isPopupAdded.contentWindow.document.getElementsByClassName("popup-close-button");
-                      if (closeIcon) {
-                        const setUserPref = function(){
-                          sessionStorage.setItem("hasUserClosedPopup", true);
-                          mixpanel.track("Popup closed");
-                          closeIcon[0].removeEventListener("click", setUserPref);
-                        }
-                        closeIcon[0].addEventListener("click",setUserPref);
-                      }
-                    }
-                  }, 500);
-              },10000);
-          }
-          else console.log("wn not found || bot opened || user closed popup || excludedPage")
-        }
-      }
-    });
+    // window.addEventListener("message", (event) => {
+    //   if (event.data && typeof event.data === "string") {
+    //     const eventData = JSON.parse(event.data);
+    //     if (eventData && eventData.type === "bubble-loaded") {
+    //       debugger
+    //       const isChatBotClosed = !document.getElementById("chat-bubble-close-wrapper");
+    //       if (!sessionStorage.getItem("hasUserClosedPopup") && window.wn && isChatBotClosed) {
+    //           setTimeout(() => {window.wn.setPopupMessage({ text: "Klik hier voor eerlijk advies van een onafhankelijke verkoopadviseur" })
+    //               setTimeout(() => {
+    //                 const isPopupAdded = document.getElementById("popup-frame");
+    //                 if (isPopupAdded && isPopupAdded.contentWindow && isPopupAdded.contentWindow.document) {
+    //                   const closeIcon = isPopupAdded.contentWindow.document.getElementsByClassName("popup-close-button");
+    //                   if (closeIcon) {
+    //                     const setUserPref = function(){
+    //                       sessionStorage.setItem("hasUserClosedPopup", true);
+    //                       mixpanel.track("Popup closed");
+    //                       closeIcon[0].removeEventListener("click", setUserPref);
+    //                     }
+    //                     closeIcon[0].addEventListener("click",setUserPref);
+    //                   }
+    //                 }
+    //               }, 500);
+    //           },10000);
+    //       }
+    //       else console.log("wn not found || bot opened || user closed popup || excludedPage")
+    //     }
+    //   }
+    // });
 
     () => {
       removeElementsOnUnmount()
