@@ -23,14 +23,17 @@ export default function App() {
 }
 
 function chatLoadListener(){
-  window.addEventListener("chat-bubble-loaded", (event) => {
+  window.addEventListener("messgae", (event) => {
     event = typeof event === 'string' ? JSON.parse(event) : event;
-    try {
-     setTimeout(() => {
-         if(document.wn){
-           document.wn.showWidget(true)
-         }
-     })} catch(error) {console.log(error)}
+    if(event.type === "chat-bubble-loaded"){
+      try {
+        setTimeout(() => {
+            if(document.wn){
+              document.wn.showWidget(true)
+            }
+        })} catch(error) {console.log(error)}
+    }
+   
  })
 }
   useEffect(() => {
