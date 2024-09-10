@@ -76,8 +76,17 @@ export default function App() {
     script_tag.src = "https://app.wotnot.io/chat-widget/pt5ccHzjEgpw082454069938MsceKjSD.js"
     script_tag.setAttribute('hidebotonload', true);
     document.head.appendChild(script_tag);
-    alert('added');
-
+    try {
+      setTimeout( () => {
+        wn.showWidget(true);
+      }
+      )
+  } catch {
+      this.logData({
+          message: "Chatbot Error",
+          value: "Error executing chatbot showWidget() function"
+      })
+  }
   }
 
   const onRemoveScript = () => {
