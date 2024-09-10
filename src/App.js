@@ -82,10 +82,7 @@ export default function App() {
       }
       )
   } catch {
-      this.logData({
-          message: "Chatbot Error",
-          value: "Error executing chatbot showWidget() function"
-      })
+      console.log("Chatbot Error");
   }
   }
 
