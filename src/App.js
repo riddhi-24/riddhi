@@ -22,7 +22,21 @@ export default function App() {
     if (preferenceInput) preferenceInput.remove();
 }
 
+function chatLoadListener(){
+  window.addEventListener("chat-bubble-loaded", (event) => {
+    event = typeof event === 'string' ? JSON.parse(event) : event;
+    try {
+     setTimeout(() => {
+         if(document.wn){
+           document.wn.showWidget(true)
+         }
+     })} catch(error) {console.log(error)}
+ })
+}
   useEffect(() => {
+  
+    chatLoadListener();
+  
 
     // window.addEventListener("message", (event) => {
     //   if (event.data && typeof event.data === "string") {
@@ -53,7 +67,9 @@ export default function App() {
     //   }
     // });
 
-    return () => {removeElementsOnUnmount();
+    return () => {
+      removeElementsOnUnmount();
+      window.removeEventListener('chat-bubble-loaded', chatLoadListener);
       // localStorage.removeItem("hasUserClosedPopup");
     }
 
@@ -76,14 +92,6 @@ export default function App() {
     script_tag.src = "https://app.wotnot.io/chat-widget/pt5ccHzjEgpw082454069938MsceKjSD.js"
     script_tag.setAttribute('hidebotonload', true);
     document.head.appendChild(script_tag);
-    try {
-      setTimeout( () => {
-        wn.showWidget(true);
-      }
-      )
-  } catch {
-      console.log("Chatbot Error");
-  }
   }
 
   const onRemoveScript = () => {
