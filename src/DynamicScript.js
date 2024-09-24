@@ -19,7 +19,7 @@ export default function DynamicScript() {
         setTimeout(() => {
             const chatWidgetClass = document.querySelector('.chat-widget-details');
             if (chatWidgetClass) chatWidgetClass.remove();
-        })
+        }, 100)
 
 
         if (window.wn && window.wn.hideWidget) {
