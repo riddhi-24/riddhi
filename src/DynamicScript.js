@@ -44,7 +44,7 @@ export default function DynamicScript() {
 
     const onAddScript = () => {
         var script_tag = document.createElement("script");
-        script_tag.src = "https://app.wotnot.io/chat-widget/pt5ccHzjEgpw082454069938MsceKjSD.js"
+        script_tag.src = "https://app.wotnot.io/chat-widget/6tBdMTj6JzRi100521719752AV2dKwMy.js"
         script_tag.setAttribute('hidebotonload', true);
         document.head.appendChild(script_tag);
     }
